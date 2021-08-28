@@ -21,6 +21,7 @@ class DottedBorder extends StatelessWidget {
   final Radius radius;
   final StrokeCap strokeCap;
   final PathBuilder? customPath;
+  final Shader? linearShader;
 
   DottedBorder({
     required this.child,
@@ -32,6 +33,7 @@ class DottedBorder extends StatelessWidget {
     this.radius = const Radius.circular(0),
     this.strokeCap = StrokeCap.butt,
     this.customPath,
+    this.linearShader,
   }) {
     assert(_isValidDashPattern(dashPattern), 'Invalid dash pattern');
   }
@@ -50,6 +52,7 @@ class DottedBorder extends StatelessWidget {
               dashPattern: dashPattern,
               customPath: customPath,
               strokeCap: strokeCap,
+              linearShader: linearShader,
             ),
           ),
         ),

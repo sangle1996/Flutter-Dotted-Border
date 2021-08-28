@@ -6,6 +6,7 @@ class _DashPainter extends CustomPainter {
   final double strokeWidth;
   final List<double> dashPattern;
   final Color color;
+  final Shader? linearShader;
   final BorderType borderType;
   final Radius radius;
   final StrokeCap strokeCap;
@@ -19,6 +20,7 @@ class _DashPainter extends CustomPainter {
     this.radius = const Radius.circular(0),
     this.strokeCap = StrokeCap.butt,
     this.customPath,
+    this.linearShader,
   }) {
     assert(dashPattern.isNotEmpty, 'Dash Pattern cannot be empty');
   }
@@ -29,7 +31,8 @@ class _DashPainter extends CustomPainter {
       ..strokeWidth = strokeWidth
       ..color = color
       ..strokeCap = strokeCap
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.stroke
+      ..shader = linearShader;
 
     Path _path;
     if (customPath != null) {
@@ -132,6 +135,7 @@ class _DashPainter extends CustomPainter {
     return oldDelegate.strokeWidth != this.strokeWidth ||
         oldDelegate.color != this.color ||
         oldDelegate.dashPattern != this.dashPattern ||
-        oldDelegate.borderType != this.borderType;
+        oldDelegate.borderType != this.borderType ||
+        oldDelegate.linearShader != this.linearShader;
   }
 }
